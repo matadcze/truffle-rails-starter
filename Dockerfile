@@ -1,16 +1,27 @@
-FROM ruby:2.7.1
+FROM oracle/graalvm-ce:20.1.0-java11
 
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+MAINTAINER Mateusz Czerwiński (czerwinski.mateusz@pm.me)
+
+RUN gu install native-image ruby
+
+RUN yum -y update && yum install -y postgresql-server postgresql postgresql-libs gcc-c++ make
+RUN yum install -y libxml2-devel libxslt libxslt-devel
+
+RUN curl -sL https://rpm.nodesource.com/setup_12.x | bash -
+RUN yum install -y nodejs
 
 RUN mkdir /myapp
 
 WORKDIR /myapp
 
-COPY Gemfile /myapp/Gemfile
+ENV BUNDLE_PATH /gems
+ENV GEM_PATH /gems
+ENV GEM_HOME /gems
 
+COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 
-RUN bundle install
+RUN gem install bundler -v '2.1.4' && bundle install
 
 COPY . /myapp
 

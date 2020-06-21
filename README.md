@@ -1,7 +1,9 @@
-# Rails API Docker Starter
+# Truffle Ruby, Rails and Docker Starter
 
-## Minimal starter for Rails 6 API application with Docker, Postgresql and Redis databases
+#####
+ Minimal starter for Truffle Ruby and Rails 6 application with Docker, Postgresql and Redis databases
 
+* **[Truffle Ruby](https://github.com/oracle/truffleruby)**
 * **[Rails](https://rubyonrails.org/)**
 * **[Docker](https://www.docker.com/)**
 * **[Postgresql](https://www.postgresql.org/)**
@@ -10,14 +12,13 @@
 ### Up&Running
 
 #### Clone the repository
-`git clone git@github.com:mc2dx/rails-api-docker-starter.git your-project`
+`git clone git@github.com:mc2dx/truffle-rails-starter.git your-project`
 
 `cd your-project`
 
-
 #### Generate new Rails application
 
-`docker-compose run api rails _6.0.3.rc1_ new . --api --force --no-deps --database=postgresql`
+`docker-compose run web rails new . --database=postgresql`
 
 #### Build a Docker image
 
@@ -49,7 +50,7 @@ production:
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
 ```
 #### Create databases
-`docker-compose run api rake db:create`
+`docker-compose run web rake db:create`
 #### Run application
 `docker-compose up`
 #### Open browser and type URL
