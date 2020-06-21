@@ -4,7 +4,7 @@ MAINTAINER Mateusz Czerwiński (czerwinski.mateusz@pm.me)
 
 RUN gu install native-image ruby
 
-RUN yum -y update && yum install -y postgresql-server postgresql postgresql-libs gcc-c++ make
+RUN yum -y update && yum install -y postgresql-server postgresql postgresql-devel postgresql-libs gcc-c++ make
 RUN yum install -y libxml2-devel libxslt libxslt-devel
 
 RUN curl -sL https://rpm.nodesource.com/setup_12.x | bash -
