@@ -18,7 +18,7 @@
 
 #### Generate new Rails application
 
-`docker-compose run web rails new . --database=postgresql`
+`docker-compose run web rails new . --force --no-deps --database=postgresql`
 
 #### Build a Docker image
 
