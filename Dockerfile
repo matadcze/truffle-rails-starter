@@ -7,8 +7,9 @@ RUN gu install native-image ruby
 RUN yum -y update && yum install -y postgresql-server postgresql postgresql-devel postgresql-libs gcc-c++ make
 RUN yum install -y libxml2-devel libxslt libxslt-devel
 
+RUN curl -sL https://dl.yarnpkg.com/rpm/yarn.repo -o /etc/yum.repos.d/yarn.repo
 RUN curl -sL https://rpm.nodesource.com/setup_12.x | bash -
-RUN yum install -y nodejs
+RUN yum install -y nodejs yarn
 
 RUN mkdir /myapp
 
